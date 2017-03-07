@@ -3,12 +3,14 @@
 
 from flask import Flask
 from flask import request
+from flask_cors import CORS, cross_origin
 import ast
 from sklearn import svm
 import numpy as np
 
 
 app = Flask(__name__)
+CORS(app)
 
 # Starting with empty data sets
 # require minimum 2 dataset to train.

@@ -59,7 +59,7 @@ def write_to_file():
     for index in range(len(input_set)):
         for i in range(len(input_set[index]) - 1):
             target.write("%s," % input_set[index][i])
-        target.write("%s\n" % input_set[len(input_set) - 1][len(input_set[index]) -1])
+        target.write("%s\n" % input_set[index][len(input_set[index]) -1])
         target.write("%s\n" % output_set[index])
 
 

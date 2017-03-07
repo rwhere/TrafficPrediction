@@ -27,11 +27,14 @@ clf = svm.SVC(kernel='linear', C=1.0, gamma=0.001)
 # 3. store to file for next time
 @app.route('/train')
 def train():
-    input_set.append(ast.literal_eval(request.args.get('input')))
-    output_set.append(int(request.args.get('output')))
-    clf.fit(np.array(input_set), output_set)
-    write_to_file()
-    return "trained new data"
+    try:
+        input_set.append(ast.literal_eval(request.args.get('input')))
+        output_set.append(int(request.args.get('output')))
+        clf.fit(np.array(input_set), output_set)
+        write_to_file()
+        return "trained new data"
+    except Exception as e:
+        return str(e)
 
 # Prediction
 # Example => /predict?data=[1,2,3,4]
@@ -40,7 +43,7 @@ def train():
 @app.route('/predict')
 def predict():
     try:
-        return str(clf.predict(ast.literal_eval(request.args.get('data'))))
+        return str(clf.predict(ast.literal_eval(request.args.get('data')))[0])
     except Exception as e:
         return str(e)
 

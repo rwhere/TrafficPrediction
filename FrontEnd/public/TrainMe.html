@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CS499Hack3">
+<head>
+    <meta charset="UTF-8">
+    <title>Training & Prediction</title>
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js" ></script>
+    <script type="text/javascript" src="./js/bootstrap.js" ></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" >
+    <script type="text/javascript" src="./js/angular.js"></script>
+    <script type="text/javascript" src="js/Hack3-ajs.js"></script>
+</head>
+<body ng-controller="Hack3Ctrl">
+    <div class="container">
+        <div class="row">
+            <h1>
+                Training
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>
+                    Input
+                </label>
+            </div>
+            <div class="col">
+                <label>
+                    Output
+                </label>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Example: [10, 0, 1, 5]
+            </div>
+            <div class="col">
+                Example: 8
+            </div>
+            <div class="col">
+                Send data to backend
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="text" id="input" >
+            </div>
+            <div class="col">
+                <input type="text" id="output" >
+            </div>
+            <div class="col">
+                <input type="button" id="submit" value="submit" ng-click="TrainMe()">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{  trainMessage }}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h1>
+                Prediction
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>
+                    Input
+                </label>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                Example: [10, 0, 1, 5]
+            </div>
+            <div class="col">
+                Send data to backend
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="text" id="input" >
+            </div>
+            <div class="col">
+                <input type="button" id="submit" value="Submit" ng-click="PredictMe()">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{  predictMessage }}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

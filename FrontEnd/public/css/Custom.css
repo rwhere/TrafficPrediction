@@ -1,0 +1,13 @@
+.profile-img {
+    width:auto;
+    height:256px;
+}
+
+header, section.success {
+    background: #442515;
+}
+
+.project-details {
+    text-align: left;
+    padding-left: 70px;
+}

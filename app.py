@@ -13,10 +13,8 @@ app = Flask(__name__)
 CORS(app)
 
 # Starting with empty data sets
-# require minimum 2 dataset to train.
-# adding 2 empty data entries
-input_set = [[0, 0, 0, 0], [0, 0, 0, 0]]
-output_set = [0, 0]
+input_set = []
+output_set = []
 clf = svm.SVC(kernel='linear', C=1.0, gamma=0.001)
 
 
@@ -30,9 +28,12 @@ def train():
     try:
         input_set.append(ast.literal_eval(request.args.get('input')))
         output_set.append(int(request.args.get('output')))
-        clf.fit(np.array(input_set), output_set)
         write_to_file()
-        return "trained new data"
+        if len(input_set) == len(output_set) and len(input_set) > 1 :
+            clf.fit(np.array(input_set), output_set)
+            return "trained new data"
+        else:
+            return "not enough data for new data"
     except Exception as e:
         return str(e)
 

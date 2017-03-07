@@ -15,7 +15,7 @@ CORS(app)
 # Starting with empty data sets
 input_set = []
 output_set = []
-clf = svm.SVC(kernel='linear', C=1.0, gamma=0.001)
+clf = svm.SVC(kernel='rbf', C=100.0, gamma=0.001)
 
 
 # Training URL
@@ -29,7 +29,7 @@ def train():
         input_set.append(ast.literal_eval(request.args.get('input')))
         output_set.append(int(request.args.get('output')))
         write_to_file()
-        if len(input_set) == len(output_set) and len(input_set) > 1 :
+        if len(input_set) == len(output_set) and len(input_set) > 1:
             clf.fit(np.array(input_set), output_set)
             return "trained new data"
         else:
@@ -60,7 +60,7 @@ def write_to_file():
     for index in range(len(input_set)):
         for i in range(len(input_set[index]) - 1):
             target.write("%s," % input_set[index][i])
-        target.write("%s\n" % input_set[index][len(input_set[index]) -1])
+        target.write("%s\n" % input_set[index][len(input_set[index]) - 1])
         target.write("%s\n" % output_set[index])
 
 
